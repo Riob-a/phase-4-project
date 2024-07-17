@@ -14,7 +14,7 @@ const App = () => {
 
   const fetchBooks = async () => {
     try {
-      const response = await fetch("http://localhost:5000/books");
+      const response = await fetch("http://localhost:5000/api/books");
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -28,7 +28,7 @@ const App = () => {
   const handlePost = async (data) => {
     if (Object.keys(data).length > 0) {
       try {
-        const response = await fetch("http://localhost:5000/books", {
+        const response = await fetch("http://localhost:5000/api/books", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const App = () => {
         price: bookDetails.price,
       };
 
-      await fetch(`http://localhost:5000/MyShelf`, {
+      await fetch(`http://localhost:5000/api/myshelf`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const App = () => {
         body: JSON.stringify(bookData),
       });
 
-      await fetch(`http://localhost:5000/books/${bookId}`, {
+      await fetch(`http://localhost:5000/api/books/${bookId}`, {
         method: 'DELETE',
       });
 
